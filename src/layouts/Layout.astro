@@ -1,0 +1,92 @@
+---
+import "../styles/global.css";
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = "/og-share.jpg" } = Astro.props;
+// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content={canonicalURL.href} /> -->
+    <!-- <meta property="og:image" content={new URL(image, Astro.site).href} /> -->
+    <meta property="og:locale" content="pt_BR" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <!-- <meta property="twitter:image" content={new URL(image, Astro.site).href} /> -->
+
+    <!-- <link rel="canonical" href={canonicalURL.href} /> -->
+  </head>
+  <body>
+    <main class="overflow-x-hidden lg:overflow-x-visible">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script>
+  import Lenis from "lenis";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // Registra o plugin ScrollTrigger no GSAP
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Inicializa o Lenis (Scroll Suave)
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: "vertical",
+    gestureOrientation: "vertical",
+    smoothWheel: true,
+  });
+
+  // Sincroniza o Lenis com o ScrollTrigger do GSAP
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+
+  // 🔥 CÓDIGO NOVO: Scroll Suave nos Links de Âncora do Menu
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault(); // Impede o salto brusco nativo do navegador
+
+      const targetId = anchor.getAttribute("href");
+
+      // Se o link for nulo ou apenas "#", ignora para não quebrar
+      if (!targetId || targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement instanceof HTMLElement) {
+        // Dispara o scroll ultra suave do Lenis até o elemento alvo
+        lenis.scrollTo(targetElement, {
+          duration: 1.5, // Duração da transição em segundos
+          offset: 0, // Se o seu menu for fixo no topo, mude para a altura do menu (ex: -80)
+        });
+      }
+    });
+  });
+</script>

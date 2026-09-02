@@ -1,0 +1,130 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="pb-8 pt-16 border-t border-slate-200 bg-slate-50 text-slate-400">
+  <!-- Bloco Principal: Logo, Links e Contatos -->
+  <div
+    class="section-wrapper flex flex-col gap-10 lg:flex-row lg:justify-between lg:items-start pb-12"
+  >
+    <!-- Coluna 1: Branding -->
+    <div class="space-y-4 max-w-sm">
+      <img
+        src="/logo.webp"
+        alt="Logo"
+        class="w-28 lg:w-36 brightness-100 contrast-100"
+      />
+      <p class="text-sm text-slate-500 font-light leading-relaxed">
+        Criando soluções digitais inovadoras para escalar o seu negócio no
+        ecossistema digital.
+      </p>
+    </div>
+
+    <!-- Coluna 2: Navegação Suave (Links internos com âncora) -->
+    <div class="space-y-4">
+      <h4 class="text-lg font-semibold uppercase tracking-wider text-slate-500">
+        Navegação
+      </h4>
+      <ul class="grid grid-cols-2 gap-x-8 gap-y-2.5 text-sm font-light">
+        <li>
+          <a
+            href="#home"
+            class="hover:text-purple-400 transition-colors duration-300">Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#problemas"
+            class="hover:text-purple-400 transition-colors duration-300"
+            >Problemas</a
+          >
+        </li>
+        <li>
+          <a
+            href="#solucoes"
+            class="hover:text-purple-400 transition-colors duration-300"
+            >Soluções</a
+          >
+        </li>
+        <li>
+          <a
+            href="#sobre"
+            class="hover:text-purple-400 transition-colors duration-300"
+            >Sobre</a
+          >
+        </li>
+        <li class="col-span-2">
+          <a
+            href="#faq"
+            class="hover:text-purple-400 transition-colors duration-300">FAQ</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Coluna 3: Contato -->
+    <div class="space-y-4">
+      <h4 class="text-lg font-semibold uppercase tracking-wider text-slate-500">
+        Contato
+      </h4>
+      <ul class="space-y-3 text-sm font-light">
+        <li>
+          <a
+            href="mailto:contato@seudominio.com"
+            class="group flex items-center gap-2 hover:text-purple-400 transition-colors duration-300"
+          >
+            <!-- Ícone de Envelope/E-mail -->
+            <Icon
+              name="mdi:email-outline"
+              class="w-5 h-5 group-hover:text-purple-400 transition-colors"
+            />
+            contato@seudominio.com
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://wa.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-2 hover:text-green-400 transition-colors duration-300"
+          >
+            <!-- Ícone de WhatsApp -->
+            <Icon
+              name="ph:whatsapp-logo"
+              class="w-5 h-5 group-hover:text-green-400 transition-colors"
+            />
+            WhatsApp
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bloco Inferior: Direitos e Links Legais -->
+  <div class="w-full pt-6 border-t border-slate-200 mt-10">
+    <div
+      class="section-wrapper flex flex-col-reverse gap-4 md:flex-row md:items-center md:justify-between text-xs text-slate-500"
+    >
+      <p class="font-light text-center md:text-left">
+        &copy; {new Date().getFullYear()} Boilerplate Astro. Todos os direitos reservados.
+      </p>
+
+      <ul class="flex flex-wrap justify-center gap-6 font-light">
+        <li>
+          <a
+            href="#"
+            class="hover:text-slate-600 transition-colors duration-300"
+            >Política de Privacidade</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="hover:text-slate-600 transition-colors duration-300"
+            >Termos de Uso</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

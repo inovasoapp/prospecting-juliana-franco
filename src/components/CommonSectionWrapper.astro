@@ -1,0 +1,15 @@
+---
+// src/components/CommonSectionWrapper.astro
+interface CommonSectionWrapperProps {
+  id?: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<section id={id ? id : ""} class:list={["section", className]}>
+  <div class="section-wrapper">
+    <slot />
+  </div>
+</section>
