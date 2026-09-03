@@ -1,0 +1,258 @@
+---
+import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+import ProjectGallery from "./ProjectGallery.tsx";
+
+const projects = [
+  {
+    number: "01",
+    category: "Arquitetura · Interiores",
+    title: "Residência Jardins",
+    description:
+      "Um projeto pensado para equilibrar acolhimento, funcionalidade e uma estética atemporal, respeitando a personalidade de quem vive o espaço.",
+    images: [
+      {
+        src: "/images/projetos/projeto-01/projeto-01.jpg",
+        alt: "Residência Jardins — vista principal",
+      },
+      {
+        src: "/images/projetos/projeto-01/projeto-02.jpg",
+        alt: "Residência Jardins — interiores",
+      },
+      {
+        src: "/images/projetos/projeto-01/projeto-03.jpg",
+        alt: "Residência Jardins — sala",
+      },
+      {
+        src: "/images/projetos/projeto-01/projeto-04.jpg",
+        alt: "Residência Jardins — jantar",
+      },
+      {
+        src: "/images/projetos/projeto-01/projeto-05.jpg",
+        alt: "Residência Jardins — detalhes",
+      },
+      {
+        src: "/images/projetos/projeto-01/projeto-06.jpg",
+        alt: "Residência Jardins — interiores",
+      },
+      {
+        src: "/images/projetos/projeto-01/projeto-07.jpg",
+        alt: "Residência Jardins — detalhe arquitetônico",
+      },
+    ],
+  },
+
+  {
+    number: "02",
+    category: "Arquitetura · Interiores",
+    title: "Apartamento Higienópolis",
+    description:
+      "Uma intervenção cuidadosa que valoriza a luz natural, os materiais e a relação entre os ambientes.",
+    images: [
+      {
+        src: "/images/projetos/projeto-02/projeto-01.jpg",
+        alt: "Apartamento Higienópolis — vista principal",
+      },
+      {
+        src: "/images/projetos/projeto-02/projeto-02.jpg",
+        alt: "Apartamento Higienópolis — interiores",
+      },
+      {
+        src: "/images/projetos/projeto-02/projeto-03.jpg",
+        alt: "Apartamento Higienópolis — sala",
+      },
+      {
+        src: "/images/projetos/projeto-02/projeto-04.jpg",
+        alt: "Apartamento Higienópolis — detalhes",
+      },
+      {
+        src: "/images/projetos/projeto-02/projeto-05.jpg",
+        alt: "Apartamento Higienópolis — cozinha",
+      },
+    ],
+  },
+
+  {
+    number: "03",
+    category: "Arquitetura · Interiores",
+    title: "Casa Alphaville",
+    description:
+      "Arquitetura, interiores e paisagismo conectados em uma composição contemporânea, elegante e essencial.",
+    images: [
+      {
+        src: "/images/projetos/projeto-03/projeto-01.jpg",
+        alt: "Casa Alphaville — vista principal",
+      },
+      {
+        src: "/images/projetos/projeto-03/projeto-02.jpg",
+        alt: "Casa Alphaville — interiores",
+      },
+      {
+        src: "/images/projetos/projeto-03/projeto-03.jpg",
+        alt: "Casa Alphaville — sala",
+      },
+      {
+        src: "/images/projetos/projeto-03/projeto-04.jpg",
+        alt: "Casa Alphaville — cozinha",
+      },
+      {
+        src: "/images/projetos/projeto-03/projeto-05.jpg",
+        alt: "Casa Alphaville — detalhes",
+      },
+      {
+        src: "/images/projetos/projeto-03/projeto-06.jpg",
+        alt: "Casa Alphaville — área externa",
+      },
+    ],
+  },
+];
+---
+
+<CommonSectionWrapper id="projects" class="">
+  <div class="mx-auto w-full">
+
+    <!-- HEADER -->
+    <header class="flex
+        flex-col
+        items-center
+        gap-10
+        lg:flex-row
+        lg:justify-between
+        lg:items-start
+        lg:gap-24">
+
+      <div>
+        <span
+          class="block text-[10px] font-medium uppercase tracking-[0.3em] text-primary"
+        >
+          Projetos
+        </span>
+
+        <div class="mt-8 flex items-center gap-4">
+          <span class="h-px w-10 bg-primary"></span>
+
+          <span
+            class="text-[10px] uppercase tracking-[0.2em] text-brown/40"
+          >
+            Arquitetura · Interiores
+          </span>
+        </div>
+      </div>
+
+      <div class="">
+        <h2
+          class="max-w-170 text-4xl font-light ml-auto leading-[1.04] tracking-[-0.045em] sm:text-5xl lg:text-6xl"
+        >
+          Projetos que carregam{" "}
+          <span class="italic">identidade, função e beleza.</span>
+        </h2>
+
+        <p
+          class="mt-8 max-w-2xl text-base ml-auto font-light leading-8 text-brown/60"
+        >
+          Cada trabalho é a materialização de um estilo de vida,
+          pensado com intenção, executado com excelência.
+        </p>
+      </div>
+    </header>
+
+
+    <!-- PROJECTS -->
+    <div class="mt-24 divide-y divide-brown/10">
+
+      {
+        projects.map((project, index) => (
+          <article
+            class:list={[
+              "py-20 first:pt-0 last:pb-0 lg:py-28",
+              index % 2 === 1 && "lg:[&>div]:direction-rtl",
+            ]}
+          >
+            <div
+  class:list={[
+    "grid items-center gap-12 lg:grid-cols-2 lg:gap-20",
+  ]}
+>
+  <!-- GALERIA -->
+  <div
+    class:list={[
+    "min-w-0",
+    index % 2 === 1 && "lg:order-2",
+  ]}
+  >
+    <ProjectGallery
+      client:load
+      images={project.images}
+      title={project.title}
+    />
+  </div>
+
+  <!-- TEXTO -->
+  <div
+    class:list={[
+      index % 2 === 1 && "lg:order-1",
+    ]}
+  >
+    <div class="flex items-center justify-between lg:block">
+      <span
+        class="text-[10px] uppercase tracking-[0.3em] text-primary"
+      >
+        {project.number}
+      </span>
+
+      <span
+        class="text-[9px] uppercase tracking-[0.2em] text-brown/35 lg:mt-3 lg:block"
+      >
+        {project.category}
+      </span>
+    </div>
+
+    <h3
+      class="mt-8 text-3xl font-light leading-tight tracking-[-0.04em] text-title sm:text-4xl"
+    >
+      {project.title}
+    </h3>
+
+    <p
+      class="mt-6 max-w-md text-sm font-light leading-7 text-brown/60"
+    >
+      {project.description}
+    </p>
+
+    <div class="mt-9 flex items-center gap-4">
+      <span class="h-px w-8 bg-primary"></span>
+
+      <span
+        class="text-[9px] uppercase tracking-[0.22em] text-brown/40"
+      >
+        Ver projeto
+      </span>
+    </div>
+  </div>
+</div>
+
+          </article>
+        ))
+      }
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <div
+      class="mt-24 border-t border-brown/10 pt-8 sm:flex sm:items-center sm:justify-between"
+    >
+      <span
+        class="text-[10px] uppercase tracking-[0.25em] text-primary"
+      >
+        Juliana Franco Arquitetura
+      </span>
+
+      <span
+        class="mt-3 block text-[10px] uppercase tracking-[0.2em] text-brown/35 sm:mt-0"
+      >
+        São Paulo · Brasil
+      </span>
+    </div>
+
+  </div>
+</CommonSectionWrapper>

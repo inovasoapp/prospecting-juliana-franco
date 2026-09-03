@@ -1,9 +1,240 @@
 ---
 import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+import OfficeGallery from "./OfficeGallery.tsx";
+
+const gallery = [
+  {
+    src: "/images/escritorio1.webp",
+    alt: "Escritório Juliana Franco Arquitetura",
+  },
+  {
+    src: "/images/escritorio2.webp",
+    alt: "Detalhes do escritório Juliana Franco Arquitetura",
+  },
+  {
+    src: "/images/escritorio3.webp",
+    alt: "Ambiente do escritório Juliana Franco Arquitetura",
+  },
+  {
+    src: "/images/escritorio4.webp",
+    alt: "Detalhes de interiores do escritório",
+  },
+  {
+    src: "/images/escritorio5.webp",
+    alt: "Espaço de trabalho do escritório",
+  },
+  {
+    src: "/images/escritorio6.webp",
+    alt: "Arquitetura e interiores do escritório",
+  },
+  {
+    src: "/images/escritorio7.webp",
+    alt: "Arquitetura e interiores do escritório",
+  },
+];
 ---
 
 <CommonSectionWrapper id="sobre" class="">
-  <div class="flex w-full items-center justify-center">
-    <h2 class="text-5xl">Seção Sobre</h2>
+  <div class="mx-auto w-full">
+    <!-- INTRO -->
+    <div class="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+      <div>
+        <span
+          class="block text-[10px] font-medium uppercase tracking-[0.3em] text-primary"
+        >
+          O escritório
+        </span>
+
+        <div class="mt-8 flex items-center gap-4">
+          <span class="h-px w-10 bg-primary"></span>
+
+          <span class="text-[10px] uppercase tracking-[0.2em] text-brown/40">
+            Arquitetura · Interiores · Gestão
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <h2
+          class="max-w-4xl text-4xl font-light leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl"
+        >
+          Espaços que começam{" "}
+          <span class="italic">antes do primeiro traço.</span>
+        </h2>
+
+        <p class="mt-8 max-w-2xl text-base font-light leading-8 text-brown/65">
+          A Juliana Franco Arquitetura nasceu do desejo de criar espaços que
+          tenham significado. Projetos onde estética, funcionalidade e
+          personalidade encontram equilíbrio em cada escolha.
+        </p>
+
+        <p class="mt-5 max-w-2xl text-base font-light leading-8 text-brown/65">
+          O escritório atua de forma próxima e cuidadosa em todas as etapas,
+          transformando referências, necessidades e sonhos em ambientes pensados
+          para serem vividos.
+        </p>
+      </div>
+    </div>
+
+    <!-- JULIANA + ADRIANO -->
+    <div class="mt-28 grid gap-0 border-y border-brown/15 lg:grid-cols-2">
+      <!-- JULIANA -->
+      <article
+        class="group border-b border-brown/15 py-10 lg:border-b-0 lg:border-r lg:pr-12 lg:py-16"
+      >
+        <div class="grid gap-8 sm:grid-cols-[180px_1fr] sm:items-start">
+          <!-- FOTO -->
+          <div class="overflow-hidden">
+            <div class="aspect-3/4 overflow-hidden bg-[#dedbd7]">
+              <img
+                src="/images/juliana.jpg"
+                alt="Juliana Franco, arquiteta e fundadora"
+                loading="lazy"
+                class="h-full w-full object-cover grayscale-10 transition-transform duration-1000 ease-out group-hover:scale-[1.035]"
+              />
+            </div>
+          </div>
+
+          <!-- CONTEÚDO -->
+          <div>
+            <div class="flex items-start justify-between">
+              <span
+                class="text-[10px] uppercase tracking-[0.25em] text-primary"
+              >
+                01
+              </span>
+
+              <span
+                class="text-[10px] uppercase tracking-[0.2em] text-brown/35"
+              >
+                Arquitetura
+              </span>
+            </div>
+
+            <div class="mt-12">
+              <h3 class="text-3xl font-light tracking-[-0.035em]">
+                Juliana Franco
+              </h3>
+
+              <p class="mt-2 text-xs uppercase tracking-[0.18em] text-primary">
+                Arquiteta · Fundadora
+              </p>
+
+              <p class="mt-7 text-sm font-light leading-7 text-brown/60">
+                À frente da criação, Juliana conduz cada projeto a partir de um
+                olhar sensível para as pessoas, para a arquitetura e para os
+                detalhes que fazem um espaço se tornar verdadeiramente seu.
+              </p>
+
+              <div
+                class="mt-8 h-px w-8 bg-primary transition-all duration-700 group-hover:w-16"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ADRIANO -->
+      <article class="group py-10 lg:py-16 lg:pl-12">
+        <div class="grid gap-8 sm:grid-cols-[180px_1fr] sm:items-start">
+          <!-- FOTO -->
+          <div class="overflow-hidden">
+            <div class="aspect-3/4 overflow-hidden bg-[#dedbd7]">
+              <img
+                src="/images/adriano.jpg"
+                alt="Adriano Kuchar, sócio responsável pela gestão de obras"
+                loading="lazy"
+                class="h-full w-full object-cover grayscale-10 transition-transform duration-1000 ease-out group-hover:scale-[1.035]"
+              />
+            </div>
+          </div>
+
+          <!-- CONTEÚDO -->
+          <div>
+            <div class="flex items-start justify-between">
+              <span
+                class="text-[10px] uppercase tracking-[0.25em] text-primary"
+              >
+                02
+              </span>
+
+              <span
+                class="text-[10px] uppercase tracking-[0.2em] text-brown/35"
+              >
+                Gestão
+              </span>
+            </div>
+
+            <div class="mt-12">
+              <h3 class="text-3xl font-light tracking-[-0.035em]">
+                Adriano Kuchar
+              </h3>
+
+              <p class="mt-2 text-xs uppercase tracking-[0.18em] text-primary">
+                Sócio · Gestão de obras
+              </p>
+
+              <p class="mt-7 text-sm font-light leading-7 text-brown/60">
+                Adriano conduz a gestão e execução das obras, conectando
+                projeto, planejamento, fornecedores e equipes para que cada
+                escolha seja executada com precisão.
+              </p>
+
+              <div
+                class="mt-8 h-px w-8 bg-primary transition-all duration-700 group-hover:w-16"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- OFFICE -->
+    <div class="mt-32">
+      <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <div>
+          <span
+            class="block text-[10px] font-medium uppercase tracking-[0.3em] text-primary"
+          >
+            Nosso espaço
+          </span>
+
+          <h3 class="mt-5 text-3xl font-light tracking-[-0.035em] sm:text-4xl">
+            Onde as ideias
+            <span class="italic">ganham forma.</span>
+          </h3>
+        </div>
+
+        <p class="max-w-sm text-sm font-light leading-6 text-brown/50">
+          Um espaço que também traduz nosso olhar: materiais, proporções, luz e
+          detalhes escolhidos com intenção.
+        </p>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="mt-14">
+        <OfficeGallery client:load images={gallery} />
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div
+      class="mt-28 grid gap-8 border-t border-brown/15 pt-10 sm:grid-cols-[1fr_auto] sm:items-end"
+    >
+      <p
+        class="max-w-3xl text-2xl font-light leading-snug tracking-tight text-title sm:text-3xl"
+      >
+        Um escritório construído sobre uma ideia simples:{" "}
+        <span class="italic">
+          arquitetura deve fazer sentido para quem vive nela.
+        </span>
+      </p>
+
+      <span class="text-[10px] uppercase tracking-[0.2em] text-brown/35">
+        São Paulo · Brasil
+      </span>
+    </div>
   </div>
 </CommonSectionWrapper>

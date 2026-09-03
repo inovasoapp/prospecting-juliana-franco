@@ -1,9 +1,383 @@
 ---
 import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+
+const faqs = [
+  {
+    number: "01",
+    question: "Como funciona o processo de um projeto?",
+    answer:
+      "O processo começa com uma conversa para entendermos suas necessidades, rotina, referências e expectativas. A partir daí, desenvolvemos o projeto de forma cuidadosa, passando pelas etapas de conceito, desenvolvimento e detalhamento até a execução.",
+  },
+  {
+    number: "02",
+    question: "Vocês trabalham com projetos residenciais e comerciais?",
+    answer:
+      "Sim. Desenvolvemos projetos residenciais e comerciais, sempre buscando compreender a identidade de cada cliente e as particularidades de cada espaço para criar soluções únicas e coerentes.",
+  },
+  {
+    number: "03",
+    question: "É possível contratar apenas uma etapa do projeto?",
+    answer:
+      "Sim. As etapas podem ser estruturadas de acordo com as necessidades de cada projeto. Após a conversa inicial, definimos juntos o escopo mais adequado para o momento e para o espaço.",
+  },
+  {
+    number: "04",
+    question: "Vocês acompanham a execução da obra?",
+    answer:
+      "Sim. O acompanhamento pode fazer parte do escopo do projeto. Dessa forma, conseguimos preservar as decisões arquitetônicas e os detalhes definidos ao longo do desenvolvimento, garantindo maior fidelidade ao conceito.",
+  },
+  {
+    number: "05",
+    question: "Atendem projetos fora de São Paulo?",
+    answer:
+      "Sim. Avaliamos projetos em outras cidades e regiões. A dinâmica de atendimento e acompanhamento é definida de acordo com a localização, complexidade e necessidades específicas de cada trabalho.",
+  },
+  {
+    number: "06",
+    question: "Como faço para iniciar um projeto?",
+    answer:
+      "O primeiro passo é entrar em contato. Queremos conhecer você, entender o que está buscando e ouvir sobre o espaço que deseja transformar. A partir dessa conversa, apresentamos os próximos passos.",
+  },
+];
 ---
 
-<CommonSectionWrapper id="faq" class="">
-  <div class="flex w-full items-center justify-center">
-    <h2 class="text-5xl">Seção FAQ</h2>
+<CommonSectionWrapper
+  id="faq"
+  class=""
+>
+  <div class="mx-auto w-full">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header
+      class="
+        flex
+        flex-col
+        items-center
+        gap-10
+        lg:flex-row
+        lg:justify-between
+        lg:items-start
+        lg:gap-24
+      "
+    >
+      <!-- LABEL -->
+
+      <div>
+        <span
+          class="
+            block
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.3em]
+            text-primary
+          "
+        >
+          FAQ
+        </span>
+
+        <div class="mt-8 flex items-center gap-4">
+          <span
+            class="
+              h-px
+              w-10
+              bg-primary
+            "
+          ></span>
+
+          <span
+            class="
+              text-[10px]
+              uppercase
+              tracking-[0.2em]
+              text-brown/40
+            "
+          >
+            Perguntas frequentes
+          </span>
+        </div>
+      </div>
+
+      <!-- TITLE -->
+
+      <div class="">
+        <h2
+          class="
+            max-w-150
+            text-4xl
+            font-light
+            leading-[1.04]
+            tracking-[-0.045em]
+            text-title
+            sm:text-5xl
+            lg:text-6xl
+          "
+        >
+          Algumas respostas antes de{" "}
+          <span class="italic">começarmos.</span>
+        </h2>
+
+        <p
+          class="
+            mt-8
+            max-w-xl
+            text-base
+            font-light
+            leading-8
+            text-brown/60
+          "
+        >
+          Reunimos algumas das dúvidas mais comuns sobre o processo,
+          atendimento e desenvolvimento dos projetos.
+        </p>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         FAQ LIST
+    ====================================================== -->
+
+    <div class="mt-20 lg:mt-28">
+      {
+        faqs.map((faq) => (
+          <details
+            class="
+              group
+              border-t
+              border-brown/10
+              last:border-b
+            "
+          >
+            <summary
+              class="
+                flex
+                cursor-pointer
+                list-none
+                items-center
+                gap-5
+                py-7
+                outline-none
+                transition-colors
+                duration-300
+                hover:text-primary
+                sm:py-8
+                lg:py-9
+              "
+            >
+              <!-- NUMBER -->
+
+              <span
+                class="
+                  w-8
+                  shrink-0
+                  font-mono
+                  text-[9px]
+                  tracking-[0.15em]
+                  text-primary/70
+                "
+              >
+                {faq.number}
+              </span>
+
+              <!-- QUESTION -->
+
+              <span
+                class="
+                  flex-1
+                  pr-4
+                  text-base
+                  font-light
+                  leading-6
+                  tracking-[-0.01em]
+                  text-title
+                  sm:text-lg
+                  lg:text-xl
+                "
+              >
+                {faq.question}
+              </span>
+
+              <!-- ICON -->
+
+              <span
+                class="
+                  relative
+                  flex
+                  size-8
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-brown/15
+                  text-brown/50
+                  transition-all
+                  duration-500
+                  group-open:rotate-180
+                  group-open:border-primary/35
+                  group-open:text-primary
+                "
+                aria-hidden="true"
+              >
+                <span
+                  class="
+                    absolute
+                    h-px
+                    w-3
+                    bg-current
+                  "
+                ></span>
+
+                <span
+                  class="
+                    absolute
+                    h-3
+                    w-px
+                    bg-current
+                    transition-transform
+                    duration-300
+                    group-open:scale-y-0
+                  "
+                ></span>
+              </span>
+
+              <!-- REMOVE DEFAULT MARKER -->
+
+              <style>
+                summary::-webkit-details-marker {
+                  display: none;
+                }
+
+                summary::marker {
+                  display: none;
+                }
+              </style>
+            </summary>
+
+            <!-- ANSWER -->
+
+            <div
+              class="
+                grid
+                grid-rows-[0fr]
+                transition-[grid-template-rows]
+                duration-500
+                ease-[cubic-bezier(.22,1,.36,1)]
+                group-open:grid-rows-[1fr]
+              "
+            >
+              <div class="overflow-hidden">
+                <div
+                  class="
+                    grid
+                    grid-cols-[32px_1fr]
+                    gap-5
+                    pb-8
+                    sm:pb-9
+                  "
+                >
+                  <span></span>
+
+                  <p
+                    class="
+                      max-w-2xl
+                      pr-10
+                      text-sm
+                      font-light
+                      leading-7
+                      text-brown/55
+                      sm:text-[15px]
+                      sm:leading-8
+                    "
+                  >
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div
+      class="
+        mt-16
+        flex
+        flex-col
+        gap-5
+        border-t
+        border-brown/10
+        pt-7
+        sm:flex-row
+        sm:items-center
+        sm:justify-between
+      "
+    >
+      <div class="flex items-center gap-4">
+        <span
+          class="
+            h-px
+            w-8
+            bg-primary
+          "
+        ></span>
+
+        <span
+          class="
+            text-[9px]
+            uppercase
+            tracking-[0.22em]
+            text-brown/35
+          "
+        >
+          Ainda ficou alguma dúvida?
+        </span>
+      </div>
+
+      <a
+        href="#contact"
+        class="
+          group
+          flex
+          items-center
+          gap-4
+          text-[9px]
+          uppercase
+          tracking-[0.22em]
+          text-title
+        "
+      >
+        <span
+          class="
+            border-b
+            border-primary/40
+            pb-1
+            transition-colors
+            duration-300
+            group-hover:border-primary
+          "
+        >
+          Entre em contato
+        </span>
+
+        <span
+          class="
+            text-primary
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
+          "
+        >
+          →
+        </span>
+      </a>
+    </div>
   </div>
 </CommonSectionWrapper>

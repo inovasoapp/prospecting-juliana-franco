@@ -1,9 +1,254 @@
 ---
 import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+import { Icon } from "astro-icon/components";
+
+const solutions = [
+  {
+    number: "01",
+    icon: "lucide:sparkles",
+    title: "Arquitetura com intenção",
+    description:
+      "Projetos que equilibram estética, funcionalidade e personalidade para transformar espaços em experiências.",
+  },
+  {
+    number: "02",
+    icon: "lucide:compass",
+    title: "Curadoria precisa",
+    description:
+      "Materiais, mobiliário, iluminação e detalhes escolhidos para construir uma identidade única e atemporal.",
+  },
+  {
+    number: "03",
+    icon: "lucide:layers-3",
+    title: "Gestão completa",
+    description:
+      "Do projeto à execução, cada etapa é acompanhada com organização, precisão e atenção aos detalhes.",
+  },
+  {
+    number: "04",
+    icon: "lucide:key-round",
+    title: "Pronto para viver",
+    description:
+      "Uma entrega completa, pensada para que você encontre o espaço exatamente como imaginou.",
+  },
+];
+
+const process = [
+  {
+    number: "01",
+    title: "Imersão",
+    description:
+      "Começamos entendendo você. Sua rotina, desejos, referências e a forma como imagina viver o espaço.",
+  },
+  {
+    number: "02",
+    title: "Concepção",
+    description:
+      "Transformamos intenções em uma direção criativa, espacial e estética que dá personalidade ao projeto.",
+  },
+  {
+    number: "03",
+    title: "Planejamento",
+    description:
+      "Detalhamos cada escolha e estruturamos orçamento, fornecedores e todas as etapas necessárias.",
+  },
+  {
+    number: "04",
+    title: "Execução",
+    description:
+      "Nossa equipe acompanha a obra de perto para garantir que cada decisão projetual seja traduzida com precisão.",
+  },
+  {
+    number: "05",
+    title: "Entrega",
+    description:
+      "Os últimos detalhes entram no lugar. O projeto deixa de ser desenho e se transforma no espaço pronto para viver.",
+  },
+];
 ---
 
 <CommonSectionWrapper id="solucoes" class="">
-  <div class="flex w-full items-center justify-center">
-    <h2 class="text-5xl">Seção de Soluções</h2>
+  <div class="w-full">
+
+    <!-- HEADER -->
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
+      <div>
+        <span
+          class="mb-5 block text-[11px] font-medium uppercase tracking-[0.3em] text-primary"
+        >
+          Soluções
+        </span>
+
+        <h2
+          class="max-w-4xl text-4xl font-light leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl"
+        >
+          Do primeiro traço{' '}
+          <span class="italic">ao último detalhe.</span>
+        </h2>
+      </div>
+
+      <div class="flex items-end">
+        <p
+          class="max-w-xl text-base font-light leading-7 sm:text-lg sm:leading-8 lg:ml-auto"
+        >
+          Cada projeto nasce de uma escuta cuidadosa e percorre um processo
+          preciso até se transformar em um espaço que traduz quem você é.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- SOLUTIONS -->
+    <div class="mt-20 border-t border-brown/15">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4">
+        {
+          solutions.map((solution, index) => (
+            <article
+              class:list={[
+                "group relative border-b border-brown/15 p-7 sm:p-9",
+                "lg:border-b-0 lg:border-r lg:last:border-r-0",
+                "transition-colors duration-500 hover:bg-white/45",
+              ]}
+            >
+              <div class="flex items-start justify-between">
+                <span class="text-xs tracking-[0.2em] text-primary">
+                  {solution.number}
+                </span>
+
+                <div
+                  class="flex size-11 items-center justify-center rounded-full border border-primary/25 text-primary transition-all duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                >
+                  <Icon name={solution.icon} size={18} />
+                </div>
+              </div>
+
+              <div class="mt-14">
+                <h3
+                  class="text-xl font-normal tracking-[-0.02em]"
+                >
+                  {solution.title}
+                </h3>
+
+                <p
+                  class="mt-4 text-sm font-light leading-6 text-brown/60"
+                >
+                  {solution.description}
+                </p>
+              </div>
+
+              <div
+                class="mt-8 h-px w-0 bg-primary transition-all duration-700 group-hover:w-12"
+              />
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+
+    <!-- PROCESS HEADER -->
+    <div class="mt-32 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+      <div>
+        <span
+          class="mb-5 block text-[11px] font-medium uppercase tracking-[0.3em] text-primary"
+        >
+          O processo
+        </span>
+
+        <h3
+          class="max-w-md text-3xl font-light leading-tight tracking-[-0.035em] sm:text-4xl"
+        >
+          Uma jornada pensada{" "}
+          <span class="italic">para ser tranquila.</span>
+        </h3>
+      </div>
+
+      <p
+        class="max-w-lg text-sm font-light leading-7 lg:ml-auto lg:text-right"
+      >
+        Da imersão inicial à entrega, cada decisão acontece com propósito.
+        Você acompanha o que importa enquanto cuidamos do que precisa ser
+        feito.
+      </p>
+    </div>
+
+
+    <!-- TIMELINE -->
+    <div class="relative mt-20">
+      <!-- horizontal line -->
+      <div
+        class="absolute left-0 right-0 top-4.5 hidden h-px bg-brown/15 lg:block"
+      />
+
+      <div class="grid gap-12 lg:grid-cols-5 lg:gap-0">
+        {
+          process.map((step, index) => (
+            <article class="group relative lg:px-5 first:lg:pl-0 last:lg:pr-0">
+              <!-- number / point -->
+              <div class="relative flex items-center gap-5 lg:block">
+                <div
+                  class="relative z-10 flex size-8.75 shrink-0 items-center justify-center rounded-full border border-primary bg-background transition-all duration-500 group-hover:bg-primary"
+                >
+                  <div class="size-1.5 rounded-full bg-primary transition-colors duration-500 group-hover:bg-white" />
+                </div>
+
+                <span
+                  class="text-[11px] tracking-[0.2em] text-primary lg:mt-7 lg:block"
+                >
+                  {step.number}
+                </span>
+              </div>
+
+              <div class="ml-13.75 mt-0 lg:ml-0 lg:mt-5">
+                <h4
+                  class="text-lg font-normal"
+                >
+                  {step.title}
+                </h4>
+
+                <p
+                  class="mt-3 max-w-52.5 text-sm font-light leading-6"
+                >
+                  {step.description}
+                </p>
+              </div>
+
+              {
+                index < process.length - 1 && (
+                  <div class="absolute left-4.25 top-8.75 h-[calc(100%+48px)] w-px bg-brown/15 lg:hidden" />
+                )
+              }
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+
+    <!-- BOTTOM STATEMENT -->
+    <div class="mt-28 border-t border-brown/15 pt-10">
+      <div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
+        <p
+          class="max-w-2xl text-2xl font-light leading-snug tracking-tight sm:text-3xl"
+        >
+          Mais do que criar espaços,{" "}
+          <span class="italic">criamos a experiência de viver neles.</span>
+        </p>
+
+        <a
+          href="#contato"
+          class="group flex shrink-0 items-center gap-4 text-xs font-medium uppercase tracking-[0.2em] text-title"
+        >
+          <span>Começar um projeto</span>
+
+          <span
+            class="flex size-10 items-center justify-center rounded-full bg-primary text-white transition-transform duration-500 group-hover:translate-x-1"
+          >
+            <Icon name="lucide:arrow-up-right" size={16} />
+          </span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </CommonSectionWrapper>

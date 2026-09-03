@@ -1,5 +1,6 @@
 ---
 import Hero from "../components/Hero.astro";
+import Emphasis from "../components/Emphasis.astro";
 import Layout from "../layouts/Layout.astro";
 import Problems from "../components/Problems.astro";
 import Solutions from "../components/Solutions.astro";
@@ -7,20 +8,29 @@ import CTA from "../components/CTA.astro";
 import AboutUs from "../components/AboutUs.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
+import Projects from "../components/Projects.astro";
 import NavMenu from "../components/NavMenu.tsx";
+import CTA2 from "../components/CTA2.astro";
+import Contact from "../components/Contacts.astro";
+import Testimonials from "../components/Testimonials.astro";
 ---
 
 <Layout
-  title="Boilerplate"
-  description="Uma landing page de exemplo para demonstração."
+  title="Juliana Franco"
+  description="Arquitetura e Interiores, Projetos personalizados para transformar espaços em lares."
 >
-  <NavMenu client:load />
+  <!-- <NavMenu client:load /> -->
 
   <Hero />
+  <Emphasis />
   <Problems />
   <Solutions />
   <CTA />
   <AboutUs />
+  <Projects client:load />
+  <Testimonials />
+  <CTA2 />
   <FAQ />
+  <Contact />
   <Footer />
 </Layout>

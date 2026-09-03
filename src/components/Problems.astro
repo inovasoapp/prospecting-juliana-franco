@@ -1,9 +1,105 @@
 ---
+import { Icon } from "astro-icon/components";
 import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+
+// Ícones do set Phosphor (@iconify-json/ph) — ajuste o pacote instalado se usar outro set.
+const problems = [
+  {
+    icon: "ph:hourglass-medium",
+    title: "Prazos que se arrastam sem previsibilidade",
+    description:
+      "Cronogramas otimistas demais, sem folga técnica, transformam meses em anos e a obra vira uma incerteza permanente.",
+  },
+  {
+    icon: "ph:coins",
+    title: "Orçamento sem controle técnico real",
+    description:
+      "Planilhas genéricas ignoram detalhes de execução. O resultado é reajuste atrás de reajuste, sem explicação clara do porquê.",
+  },
+  {
+    icon: "ph:chats-circle",
+    title: "Comunicação fragmentada entre projeto e obra",
+    description:
+      "Arquiteto, equipe de obra e cliente conversando em canais diferentes, sem registro único, decisões se perdem no caminho.",
+  },
+  {
+    icon: "ph:fingerprint-simple",
+    title: "Entrega genérica, sem identidade",
+    description:
+      "Sem curadoria de ponta a ponta, o projeto perde a coerência, cada ambiente parece ter sido pensado por uma pessoa diferente.",
+  },
+];
 ---
 
-<CommonSectionWrapper id="problemas" class="bg-blue-500/30">
-  <div class="flex w-full items-center justify-center">
-    <h2 class="text-5xl">Seção de problemas</h2>
+<CommonSectionWrapper id="problemas" class="">
+  <div
+    class="mx-auto grid w-full grid-cols-1 gap-12 md:px-6 md:grid-cols-[minmax(0,500px)_1fr] md:gap-20"
+  >
+    <!-- Coluna fixa: headline -->
+    <div class="md:sticky md:top-28 md:self-start">
+      <h2
+        class="max-w-4xl text-4xl font-light leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl"
+      >
+        Projetos de alto padrão exigem mais do que bom gosto.
+      </h2>
+      <p class="mt-6 max-w-[38ch] text-base leading-relaxed text-[#A79B8E]">
+        A maioria dos problemas que vemos não nasce do projeto em si, nasce da
+        falta de gestão entre concepção e execução.
+      </p>
+    </div>
+
+    <!-- Coluna de conteúdo: lista de problemas -->
+    <div class="border-t border-brown/10">
+      {
+        problems.map((problem) => (
+          <div class="problem-row group grid grid-cols-[auto_1fr] items-start gap-6 border-b border-brown/10 py-10 opacity-0">
+            <Icon
+              name={problem.icon}
+              class="mt-1 h-7 w-7 shrink-0 text-[#B8895F]"
+              aria-hidden="true"
+            />
+            <div>
+              <h3 class="text-xl">{problem.title}</h3>
+              <p class="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-[#A79B8E]">
+                {problem.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </CommonSectionWrapper>
+
+<script>
+  import { animate, inView } from "motion";
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const rows = document.querySelectorAll<HTMLElement>(
+    "#problemas .problem-row",
+  );
+
+  if (prefersReducedMotion) {
+    rows.forEach((row) => (row.style.opacity = "1"));
+  } else {
+    rows.forEach((row, index) => {
+      inView(
+        row,
+        () => {
+          animate(
+            row,
+            {
+              opacity: [0, 1],
+              y: [16, 0],
+            },
+            { duration: 0.6, delay: index * 0.08, ease: "easeOut" },
+          );
+        },
+        { amount: 0.4 },
+      );
+    });
+  }
+</script>

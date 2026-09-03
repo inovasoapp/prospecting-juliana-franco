@@ -1,0 +1,157 @@
+---
+import { Icon } from "astro-icon/components";
+import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+
+interface Props {
+  index?: number;
+}
+
+const { index = 2 } = Astro.props;
+const paddedIndex = String(index).padStart(2, "0");
+---
+
+<CommonSectionWrapper id="cta2" class="bg-brown">
+  <section class="w-full">
+    <div
+      id="cta-panel"
+      class="relative flex min-h-130 items-center justify-center overflow-hidden border-y border-neutral-500/10 py-28 sm:min-h-145 sm:py-32 lg:min-h-160 lg:py-40"
+    >
+      <!-- NÚMERO DECORATIVO (com leve parallax) -->
+      <!-- Wrapper cuida só da centralização vertical estática (-translate-y-1/2);
+           o span interno recebe o transform do motion, evitando conflito entre os dois. -->
+      <!-- <span
+        aria-hidden="true"
+        class="pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 select-none overflow-hidden sm:-left-4 lg:left-0"
+      >
+        <span
+          id="cta-number"
+          class="block font-serif text-[180px] font-light leading-none tracking-[-0.08em] text-neutral-500/[0.025] sm:text-[240px] lg:text-[320px]"
+        >
+          {paddedIndex}
+        </span>
+      </span> -->
+
+      <!-- TOP LABEL (assinatura da marca, sem redundância com o eyebrow) -->
+      <div
+        class="absolute left-0 right-0 top-8 flex items-center justify-end px-1 sm:top-10 lg:top-12"
+      >
+        <span
+          class="hidden text-[9px] uppercase tracking-[0.25em] text-neutral-500 sm:block"
+        >
+          Juliana Franco Arquitetura
+        </span>
+      </div>
+
+      <!-- CONTEÚDO PRINCIPAL -->
+      <div
+        class="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center text-center"
+      >
+        <div class="cta-reveal flex items-center gap-4 opacity-0">
+          <span class="h-px w-8 bg-primary/40"></span>
+          <span
+            class="text-[9px] uppercase tracking-[0.28em] text-neutral-500/90"
+          >
+            Arquitetura com intenção
+          </span>
+          <span class="h-px w-8 bg-primary/40"></span>
+        </div>
+
+        <h2
+          class="cta-reveal mt-10 max-w-4xl text-[42px] font-light leading-[1.03] tracking-[-0.055em] text-title opacity-0 sm:mt-12 sm:text-6xl lg:text-[76px]"
+        >
+          O seu espaço pode
+          <br class="hidden sm:block" />
+          <span class="italic">dizer muito sobre você.</span>
+        </h2>
+
+        <p
+          class="cta-reveal mt-8 max-w-lg text-sm font-light leading-7 text-neutral-500 opacity-0 sm:text-base sm:leading-8"
+        >
+          Conte-nos o que você imagina. A partir dessa conversa, começamos a
+          transformar ideias em um projeto com identidade.
+        </p>
+
+        <a
+          href="#"
+          class="group inline-flex w-fit items-center gap-5 bg-primary px-8 py-5 rounded-md hover:brightness-105 transition-all duration-300 mt-20"
+        >
+          <span
+            class="text-xs text-neutral-50 font-medium uppercase tracking-[0.2em]"
+          >
+            Iniciar conversa
+          </span>
+
+          <Icon
+            name="lucide:arrow-up-right"
+            size={20}
+            class="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 text-neutral-50"
+          />
+        </a>
+      </div>
+
+      <!-- RODAPÉ DO PAINEL -->
+      <div
+        class="absolute bottom-8 left-0 right-0 flex items-center justify-center sm:bottom-10 lg:bottom-12"
+      >
+        <span
+          class="text-[8px] uppercase tracking-[0.28em] text-neutral-500/75"
+        >
+          São Paulo · Brasil
+        </span>
+      </div>
+
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute right-0 top-1/2 hidden h-px w-20 -translate-y-1/2 bg-primary/20 lg:block"
+      ></span>
+
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute left-0 top-1/2 hidden h-px w-20 -translate-y-1/2 bg-primary/20 lg:block"
+      ></span>
+    </div>
+  </section>
+</CommonSectionWrapper>
+
+<script>
+  import { animate, inView, scroll } from "motion";
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const panel = document.querySelector<HTMLElement>("#cta-panel");
+  const number = document.querySelector<HTMLElement>("#cta-number");
+  const revealEls = document.querySelectorAll<HTMLElement>(".cta-reveal");
+
+  if (prefersReducedMotion) {
+    revealEls.forEach((el) => (el.style.opacity = "1"));
+  } else {
+    inView(
+      "#cta-panel",
+      () => {
+        revealEls.forEach((el, index) => {
+          animate(
+            el,
+            {
+              opacity: [0, 1],
+              y: [14, 0],
+            },
+            { duration: 0.7, delay: index * 0.1, ease: "easeOut" },
+          );
+        });
+      },
+      { amount: 0.5 },
+    );
+
+    // Parallax sutil do número enquanto a seção passa pela viewport
+    if (panel && number) {
+      scroll(
+        animate(number, {
+          y: [-30, 30],
+        }),
+        { target: panel, offset: ["start end", "end start"] },
+      );
+    }
+  }
+</script>

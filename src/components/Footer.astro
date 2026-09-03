@@ -1,130 +1,429 @@
 ---
 import { Icon } from "astro-icon/components";
+import CommonSectionWrapper from "./CommonSectionWrapper.astro";
 ---
 
-<footer class="pb-8 pt-16 border-t border-slate-200 bg-slate-50 text-slate-400">
-  <!-- Bloco Principal: Logo, Links e Contatos -->
-  <div
-    class="section-wrapper flex flex-col gap-10 lg:flex-row lg:justify-between lg:items-start pb-12"
-  >
-    <!-- Coluna 1: Branding -->
-    <div class="space-y-4 max-w-sm">
-      <img
-        src="/logo.webp"
-        alt="Logo"
-        class="w-28 lg:w-36 brightness-100 contrast-100"
-      />
-      <p class="text-sm text-slate-500 font-light leading-relaxed">
-        Criando soluções digitais inovadoras para escalar o seu negócio no
-        ecossistema digital.
-      </p>
-    </div>
+<footer class="border-t border-brown/10
+    text-brown">
+  <!-- =====================================================
+       MAIN FOOTER
+  ====================================================== -->
 
-    <!-- Coluna 2: Navegação Suave (Links internos com âncora) -->
-    <div class="space-y-4">
-      <h4 class="text-lg font-semibold uppercase tracking-wider text-slate-500">
-        Navegação
-      </h4>
-      <ul class="grid grid-cols-2 gap-x-8 gap-y-2.5 text-sm font-light">
-        <li>
+  <CommonSectionWrapper id="contact" class="">
+    <div class="mx-auto w-full">
+      <div
+        class="grid gap-14
+        lg:grid-cols-[1.4fr_0.7fr_0.9fr]
+        lg:gap-20"
+      >
+        <!-- =================================================
+           BRANDING
+      ================================================== -->
+
+        <div class="max-w-xl">
           <a
             href="#home"
-            class="hover:text-purple-400 transition-colors duration-300">Home</a
+            aria-label="Juliana Franco Arquitetura — início"
+            class="inline-block"
           >
-        </li>
-        <li>
-          <a
-            href="#problemas"
-            class="hover:text-purple-400 transition-colors duration-300"
-            >Problemas</a
-          >
-        </li>
-        <li>
-          <a
-            href="#solucoes"
-            class="hover:text-purple-400 transition-colors duration-300"
-            >Soluções</a
-          >
-        </li>
-        <li>
-          <a
-            href="#sobre"
-            class="hover:text-purple-400 transition-colors duration-300"
-            >Sobre</a
-          >
-        </li>
-        <li class="col-span-2">
-          <a
-            href="#faq"
-            class="hover:text-purple-400 transition-colors duration-300">FAQ</a
-          >
-        </li>
-      </ul>
-    </div>
-
-    <!-- Coluna 3: Contato -->
-    <div class="space-y-4">
-      <h4 class="text-lg font-semibold uppercase tracking-wider text-slate-500">
-        Contato
-      </h4>
-      <ul class="space-y-3 text-sm font-light">
-        <li>
-          <a
-            href="mailto:contato@seudominio.com"
-            class="group flex items-center gap-2 hover:text-purple-400 transition-colors duration-300"
-          >
-            <!-- Ícone de Envelope/E-mail -->
-            <Icon
-              name="mdi:email-outline"
-              class="w-5 h-5 group-hover:text-purple-400 transition-colors"
+            <img
+              src="/logo-marrom.webp"
+              alt="Juliana Franco Arquitetura"
+              class="w-44
+              object-contain
+              sm:w-52
+              lg:w-60"
             />
-            contato@seudominio.com
           </a>
-        </li>
-        <li>
-          <a
-            href="https://wa.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex items-center gap-2 hover:text-green-400 transition-colors duration-300"
-          >
-            <!-- Ícone de WhatsApp -->
-            <Icon
-              name="ph:whatsapp-logo"
-              class="w-5 h-5 group-hover:text-green-400 transition-colors"
-            />
-            WhatsApp
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Bloco Inferior: Direitos e Links Legais -->
-  <div class="w-full pt-6 border-t border-slate-200 mt-10">
-    <div
-      class="section-wrapper flex flex-col-reverse gap-4 md:flex-row md:items-center md:justify-between text-xs text-slate-500"
-    >
-      <p class="font-light text-center md:text-left">
-        &copy; {new Date().getFullYear()} Boilerplate Astro. Todos os direitos reservados.
-      </p>
+          <div class="mt-8 flex items-center gap-4">
+            <span class="h-px w-10 bg-primary"></span>
 
-      <ul class="flex flex-wrap justify-center gap-6 font-light">
-        <li>
-          <a
-            href="#"
-            class="hover:text-slate-600 transition-colors duration-300"
-            >Política de Privacidade</a
+            <span
+              class="text-[9px]
+              uppercase
+              tracking-[0.3em]
+              text-brown/40"
+            >
+              Arquitetura · Interiores
+            </span>
+          </div>
+
+          <p
+            class="mt-7
+            max-w-md
+            text-sm
+            font-light
+            leading-7
+            text-brown/55"
           >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="hover:text-slate-600 transition-colors duration-300"
-            >Termos de Uso</a
+            Transformamos espaços em experiências. Projetos autorais de
+            arquitetura e interiores desenvolvidos com curadoria em cada
+            detalhe, refletindo a essência de quem vive.
+          </p>
+        </div>
+
+        <!-- =================================================
+           NAVIGATION
+      ================================================== -->
+
+        <div>
+          <span
+            class="text-[9px]
+            uppercase
+            tracking-[0.3em]
+            text-primary"
           >
-        </li>
-      </ul>
+            Navegação
+          </span>
+
+          <ul class="mt-7 space-y-4 w-fit">
+            <li>
+              <a
+                href="#home"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                Início
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#problems"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                Problemas
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#solutions"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                Soluções
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#projects"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                Projetos
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#about"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                Sobre
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#faq"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                FAQ
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#contact"
+                class="group
+                flex items-center gap-3
+                text-sm
+                font-light
+                text-brown/65
+                transition-colors duration-300
+                hover:text-primary"
+              >
+                <span
+                  class="h-px w-0
+                  bg-primary
+                  transition-all duration-300
+                  group-hover:w-5"
+                ></span>
+
+                Contato
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- =================================================
+           CONTACT + SOCIAL
+      ================================================== -->
+
+        <div>
+          <span
+            class="text-[9px]
+            uppercase
+            tracking-[0.3em]
+            text-primary"
+          >
+            Conecte-se
+          </span>
+
+          <div class="mt-7 space-y-5 w-fit">
+            <!-- Instagram -->
+
+            <a
+              href="https://www.instagram.com/julianafranco.arq"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group
+              flex items-center gap-4
+              text-sm
+              font-light
+              text-brown/65
+              transition-colors duration-300
+              hover:text-primary"
+            >
+              <span
+                class="flex size-9
+                items-center justify-center
+                rounded-full
+                border border-brown/10
+                text-brown/55
+                transition-all duration-300
+                group-hover:border-primary/30
+                group-hover:text-primary"
+              >
+                <Icon name="mdi:instagram" class="h-4 w-4" />
+              </span>
+
+              <span>Instagram</span>
+            </a>
+
+            <!-- Pinterest -->
+
+            <a
+              href="https://br.pinterest.com/julianafrancoarquitetura/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group
+              flex items-center gap-4
+              text-sm
+              font-light
+              text-brown/65
+              transition-colors duration-300
+              hover:text-primary"
+            >
+              <span
+                class="flex size-9
+                items-center justify-center
+                rounded-full
+                border border-brown/10
+                text-brown/55
+                transition-all duration-300
+                group-hover:border-primary/30
+                group-hover:text-primary"
+              >
+                <Icon name="mdi:pinterest" class="h-4 w-4" />
+              </span>
+
+              <span>Pinterest</span>
+            </a>
+
+            <!-- YouTube -->
+
+            <a
+              href="https://www.youtube.com/@JulianaFrancoArquiteta"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group
+              flex items-center gap-4
+              text-sm
+              font-light
+              text-brown/65
+              transition-colors duration-300
+              hover:text-primary"
+            >
+              <span
+                class="flex size-9
+                items-center justify-center
+                rounded-full
+                border border-brown/10
+                text-brown/55
+                transition-all duration-300
+                group-hover:border-primary/30
+                group-hover:text-primary"
+              >
+                <Icon name="mdi:youtube" class="h-4 w-4" />
+              </span>
+
+              <span>YouTube</span>
+            </a>
+          </div>
+
+          <!-- WhatsApp -->
+
+          <div class="mt-10">
+            <span
+              class="block
+              text-[9px]
+              uppercase
+              tracking-[0.25em]
+              text-brown/30"
+            >
+              Atendimento
+            </span>
+
+            <a
+              href="http://wa.me/551138060295"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group
+              mt-4
+              inline-flex items-center gap-3
+              text-sm
+              font-light
+              text-brown/65
+              transition-colors duration-300
+              hover:text-primary"
+            >
+              <Icon
+                name="ph:whatsapp-logo"
+                class="h-4 w-4
+                text-primary"
+              />
+
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         DECORATIVE DIVIDER
+    ====================================================== -->
+
+      <div
+        class="mt-16
+        h-px
+        bg-brown/10
+        sm:mt-20
+        lg:mt-24"
+      >
+      </div>
+
+      <!-- =====================================================
+         BOTTOM
+    ====================================================== -->
+
+      <div
+        class="flex flex-col gap-5
+        pt-7
+        sm:flex-row
+        sm:items-center
+        sm:justify-between"
+      >
+        <p
+          class="text-xs
+          uppercase
+          tracking-[0.18em]
+          text-brown/30"
+        >
+          © {new Date().getFullYear()} Juliana Franco Arquitetura
+        </p>
+
+        <div class="flex items-center gap-3">
+          <span class="h-px w-6 bg-primary/50"></span>
+
+          <span
+            class="text-[9px]
+            uppercase
+            tracking-[0.2em]
+            text-brown/30"
+          >
+            São Paulo · Brasil
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
+  </CommonSectionWrapper>
 </footer>

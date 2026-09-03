@@ -5,54 +5,35 @@ import CTAButtonMorph from "./CTAButtonMorph";
 <section id="home" class="hero-section">
   <div class="hero-section-wrapper">
     <div class="w-full lg:max-w-1/2">
-      <span
-        class="px-4 py-2 bg-purple-100 rounded-md font-light text-sm mb-2 inline-block"
-        >Marketing Digital</span
-      >
+      <img src="/logo-marrom.webp" alt="" class="w-60 lg:w-80 mb-2" />
 
-      <h1 class="text-6xl">Boilerplate Astro</h1>
+      <h1 class="text-5xl text-title">
+        Seu imóvel, projetado com precisão. Executado com excelência.
+      </h1>
 
-      <p class="text-base lg:text-xl mb-8">
-        lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+      <p class="text-base font-light lg:text-xl mb-8 mt-4 max-w-150">
+        Projetos de assinatura para residências e ambientes corporativos de alto
+        padrão em São Paulo. Do conceito à entrega, com curadoria em cada
+        detalhe.
       </p>
 
-      <CTAButtonMorph
-        client:load
-        size="base"
-        buttonBgColor="#a855f7"
-        bgColor="#a855f7"
-        title="QUERO SER UM MILIONÁRIO!"
-        titleColor="#ffffff"
-        radius="md"
+      <a
+        href="https://wa.me/5511932033948?text=Ol%C3%A1!%20Boa%20tarde.%20Quero%20mais%20informa%C3%A7%C3%B5es..."
+        target="_blank"
+        class="w-full lg:w-60 bg-primary px-8 py-5 rounded-md hover:brightness-105 transition-all duration-300 text-sm text-neutral-50 font-medium uppercase lg:tracking-[0.2em]"
       >
-        <div class="w-full h-full flex items-center justify-center">
-          <div class="max-w-lg w-full">
-            <p class="text-sm text-white/90">
-              Preencha seu e-mail abaixo e receba o material gratuito.
-            </p>
-            <input
-              type="email"
-              placeholder="seu@email.com"
-              class="mt-3 w-full rounded-lg bg-white/10 px-4 py-2 text-white placeholder:text-white/50 outline-none"
-            />
-            <button
-              class="mt-3 w-full rounded-lg bg-white py-2 text-sm font-medium text-purple-700"
-            >
-              Enviar
-            </button>
-          </div>
-        </div>
-      </CTAButtonMorph>
+        Quero um projeto feito para mim
+      </a>
     </div>
 
-    <div
+    <!-- <div
       class="w-full lg:max-w-1/2 flex justify-center img-container rounded-2xl"
     >
       <img
-        src="/public/specialist.webp"
+        src="/specialist.webp"
         alt=""
         class="w-full h-full aspect-square object-cover rounded-2xl shadow-2xl shadow-purple-500/10 hero-image border border-slate-300"
       />
-    </div>
+    </div> -->
   </div>
 </section>

@@ -1,15 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gelasio&family=Instrument+Sans:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 @import "tailwindcss";
 
 @theme {
-  --font-bebas: "Bebas Neue", sans-serif;
-  --font-poppins: "Poppins", sans-serif;
+  --font-gelasio: "Gelasio", serif;
+  --font-instrument-sans: "Instrument Sans", sans-serif;
+
+  --color-primary: #b16f48;
+  --color-title: #743612;
+  --color-background: #f1f1f1;
+  --color-brown: #22150c;
+  --color-overlay: #120b07;
 }
 
 @layer base {
   * {
-    font-family: var(--font-poppins);
+    font-family: var(--font-instrument-sans);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,7 +24,7 @@
   body {
     font-size: 1rem;
     color: #606060;
-    background-color: #f0f1ee;
+    background-color: var(--color-background);
   }
 
   h1,
@@ -27,16 +33,16 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-bebas);
+    font-family: var(--font-gelasio);
   }
   h1 {
     font-size: 3rem;
     letter-spacing: 1px;
-    color: #202020;
+    color: var(--color-title);
   }
   h2,
   h3 {
-    color: #404040;
+    color: var(--color-title);
     font-size: 2.5rem;
   }
   label {
@@ -55,7 +61,7 @@
 .hero-section {
   height: 900px;
   width: 100%;
-  background-image: url("/public/bg-hero.webp");
+  background-image: url("/bg-hero.webp");
   background-size: cover;
   background-position: center;
   margin-left: auto;
@@ -78,8 +84,8 @@
 
 .section {
   width: 100%;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   margin-left: auto;
   margin-right: auto;
 }

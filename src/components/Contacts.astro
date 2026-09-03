@@ -1,0 +1,432 @@
+---
+import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+
+const whatsapp1 = "http" + "://wa.me/551138060295";
+
+const whatsapp2 = "http" + "://wa.me/5511932033948";
+
+const address =
+  "R. Dra. Neyde Apparecida Sollitto, 432 – CJ 62 – Vila Clementino – São Paulo/SP";
+
+const mapsUrl =
+  "https" +
+  "://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent(address);
+
+const mapEmbedUrl =
+  "https" +
+  "://www.google.com/maps?q=" +
+  encodeURIComponent(address) +
+  "&output=embed";
+---
+
+<CommonSectionWrapper id="contact" class="">
+  <div class="mx-auto w-full">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header
+      class="flex
+        flex-col
+        items-center
+        gap-10
+        lg:flex-row
+        lg:justify-between
+        lg:items-start
+        lg:gap-24"
+    >
+      <!-- LABEL -->
+
+      <div>
+        <span
+          class="block
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.3em]
+            text-primary"
+        >
+          Contato
+        </span>
+
+        <div class="mt-8 flex items-center gap-4">
+          <span class="h-px
+              w-10
+              bg-primary"></span>
+
+          <span
+            class="text-[10px]
+              uppercase
+              tracking-[0.2em]
+              text-brown/40"
+          >
+            Vamos conversar
+          </span>
+        </div>
+      </div>
+
+      <!-- TITLE -->
+
+      <div>
+        <h2
+          class="max-w-170
+            text-4xl
+            font-light
+            leading-[1.04]
+            tracking-[-0.045em]
+            text-title
+            sm:text-5xl
+            lg:text-6xl"
+        >
+          Um bom projeto começa{" "}
+          <span class="italic">com uma boa conversa.</span>
+        </h2>
+
+        <p
+          class="mt-8
+            max-w-xl
+            text-base
+            font-light
+            leading-8
+            text-brown/60"
+        >
+          Entre em contato para contar um pouco sobre o seu espaço, suas ideias
+          e o que você deseja transformar.
+        </p>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         CONTACT CONTENT
+    ====================================================== -->
+
+    <div
+      class="mt-20
+        grid
+        gap-12
+        lg:mt-28
+        lg:grid-cols-[0.8fr_1.2fr]
+        lg:gap-20"
+    >
+      <!-- =================================================
+           CONTACT INFORMATION
+      ================================================== -->
+
+      <div
+        class="flex
+          flex-col
+          justify-between
+          border-y
+          border-brown/10
+          py-8
+          sm:py-10
+          lg:min-h-130"
+      >
+        <div>
+          <!-- WHATSAPP -->
+
+          <span
+            class="text-[9px]
+              uppercase
+              tracking-[0.28em]
+              text-brown/35"
+          >
+            WhatsApp
+          </span>
+
+          <div class="mt-7 flex flex-col">
+            <!-- WHATSAPP 01 -->
+
+            <a
+              href={whatsapp1}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group
+                flex
+                items-center
+                justify-between
+                border-b
+                border-brown/10
+                py-5
+                transition-colors
+                duration-300
+                hover:border-primary/30"
+            >
+              <div>
+                <span
+                  class="block
+                    text-[9px]
+                    uppercase
+                    tracking-[0.18em]
+                    text-brown/35"
+                >
+                  Atendimento
+                </span>
+
+                <span
+                  class="mt-2
+                    block
+                    text-base
+                    font-light
+                    tracking-[-0.01em]
+                    text-title"
+                >
+                  (11) 3806-0295
+                </span>
+              </div>
+
+              <span
+                class="flex
+                  size-8
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-brown/15
+                  text-sm
+                  text-brown/50
+                  transition-all
+                  duration-300
+                  group-hover:translate-x-1
+                  group-hover:border-primary/40
+                  group-hover:text-primary"
+              >
+                →
+              </span>
+            </a>
+
+            <!-- WHATSAPP 02 -->
+
+            <a
+              href={whatsapp2}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group
+                flex
+                items-center
+                justify-between
+                border-b
+                border-brown/10
+                py-5
+                transition-colors
+                duration-300
+                hover:border-primary/30"
+            >
+              <div>
+                <span
+                  class="block
+                    text-[9px]
+                    uppercase
+                    tracking-[0.18em]
+                    text-brown/35"
+                >
+                  Atendimento
+                </span>
+
+                <span
+                  class="mt-2
+                    block
+                    text-base
+                    font-light
+                    tracking-[-0.01em]
+                    text-title"
+                >
+                  (11) 93203-3948
+                </span>
+              </div>
+
+              <span
+                class="flex
+                  size-8
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-brown/15
+                  text-sm
+                  text-brown/50
+                  transition-all
+                  duration-300
+                  group-hover:translate-x-1
+                  group-hover:border-primary/40
+                  group-hover:text-primary"
+              >
+                →
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ADDRESS -->
+
+        <div class="mt-12 lg:mt-0">
+          <span
+            class="text-[9px]
+              uppercase
+              tracking-[0.28em]
+              text-brown/35"
+          >
+            Escritório
+          </span>
+
+          <p
+            class="mt-5
+              max-w-sm
+              text-sm
+              font-light
+              leading-7
+              text-brown/60"
+          >
+            {address}
+          </p>
+
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group
+              mt-7
+              inline-flex
+              items-center
+              gap-4"
+          >
+            <span
+              class="text-[9px]
+                uppercase
+                tracking-[0.24em]
+                text-title"
+            >
+              Como chegar
+            </span>
+
+            <span
+              class="text-primary
+                transition-transform
+                duration-300
+                group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- =================================================
+           MAP
+      ================================================== -->
+
+      <div class="relative min-w-0">
+        <div
+          class="relative
+            aspect-4/3
+            min-h-85
+            overflow-hidden
+            bg-[#dedbd7]
+            sm:min-h-105
+            lg:aspect-auto
+            lg:h-full
+            lg:min-h-130"
+        >
+          <iframe
+            src={mapEmbedUrl}
+            title="Localização do escritório Juliana Franco Arquitetura"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="absolute
+              inset-0
+              h-full
+              w-full
+              border-0
+              grayscale-[0.8]
+              contrast-[0.9]
+              opacity-80"
+          ></iframe>
+
+          <!-- MAP OVERLAY -->
+
+          <div
+            class="pointer-events-none
+              absolute
+              inset-0
+              bg-brown/10
+              mix-blend-multiply"
+          >
+          </div>
+
+          <!-- LOCATION LABEL -->
+
+          <div
+            class="absolute
+              bottom-5
+              left-5
+              max-w-65
+              border
+              border-white/30
+              bg-background/90
+              px-5
+              py-4
+              backdrop-blur-md
+              sm:bottom-7
+              sm:left-7"
+          >
+            <span
+              class="block
+                text-[8px]
+                uppercase
+                tracking-[0.25em]
+                text-primary"
+            >
+              Vila Clementino
+            </span>
+
+            <span
+              class="mt-2
+                block
+                text-[10px]
+                leading-5
+                text-brown/60"
+            >
+              São Paulo · SP
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div
+      class="mt-16
+        flex
+        flex-col
+        gap-4
+        border-t
+        border-brown/10
+        pt-7
+        sm:flex-row
+        sm:items-center
+        sm:justify-between"
+    >
+      <span
+        class="text-[9px]
+          uppercase
+          tracking-[0.25em]
+          text-primary"
+      >
+        Juliana Franco Arquitetura
+      </span>
+
+      <span
+        class="text-[9px]
+          uppercase
+          tracking-[0.2em]
+          text-brown/30"
+      >
+        Arquitetura · Interiores
+      </span>
+    </div>
+  </div>
+</CommonSectionWrapper>

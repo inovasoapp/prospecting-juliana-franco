@@ -1,9 +1,85 @@
 ---
 import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<CommonSectionWrapper class="bg-amber-200">
-  <div class="flex w-full items-center justify-center">
-    <h2 class="text-5xl">Seção de CTA</h2>
+<CommonSectionWrapper id="contato" class="bg-brown text-background">
+  <div class="mx-auto w-full">
+    <!-- TOP -->
+    <div
+      class="flex items-center justify-between border-b border-white/15 pb-6"
+    >
+      <span
+        class="text-[10px] font-medium uppercase tracking-[0.3em] text-primary"
+      >
+        Vamos conversar
+      </span>
+
+      <span class="text-[10px] uppercase tracking-[0.25em] text-white/35">
+        Juliana Franco Arquitetura
+      </span>
+    </div>
+
+    <!-- MAIN -->
+    <div class="relative py-24 sm:py-32 lg:py-40">
+      <!-- decorative circle -->
+      <div
+        class="pointer-events-none absolute -right-20 top-1/2 hidden size-72 -translate-y-1/2 rounded-full border border-primary/20 lg:block"
+      >
+        <div class="absolute inset-8 rounded-full border border-primary/10">
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl">
+        <span
+          class="mb-8 block text-xs uppercase tracking-[0.25em] text-white/40"
+        >
+          Seu próximo espaço começa aqui
+        </span>
+
+        <h2
+          class="max-w-xl text-5xl font-light leading-[0.95] tracking-tighter"
+        >
+          Vamos criar um espaço{" "}
+          <span class="text-primary italic"> que tenha a sua cara? </span>
+        </h2>
+      </div>
+
+      <!-- CTA -->
+      <div
+        class="relative z-10 mt-16 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p class="max-w-md text-sm font-light leading-6 text-white/50">
+          Conte um pouco sobre o que você imagina. A partir daí, construímos
+          juntos o caminho para transformar essa ideia em realidade.
+        </p>
+
+        <a
+          href="#"
+          class="group inline-flex w-fit items-center gap-5 bg-primary px-8 py-5 rounded-md hover:brightness-105 transition-all duration-300"
+        >
+          <span
+            class="text-xs text-neutral-50 font-medium uppercase tracking-[0.2em]"
+          >
+            Iniciar conversa
+          </span>
+
+          <Icon
+            name="lucide:arrow-up-right"
+            size={20}
+            class="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+          />
+        </a>
+      </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div
+      class="flex flex-col gap-5 border-t border-white/15 pt-7 text-[10px] uppercase tracking-[0.2em] text-white/35 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <span> Arquitetura · Interiores · Execução </span>
+
+      <span> São Paulo · Brasil </span>
+    </div>
   </div>
 </CommonSectionWrapper>
