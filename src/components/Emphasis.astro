@@ -1,12 +1,78 @@
 ---
 import CommonSectionWrapper from "./CommonSectionWrapper.astro";
+
+// TODO: substituir pelos números reais do escritório antes de publicar
+const stats = [
+  { value: 12, suffix: "+", label: "Anos de atuação" },
+  { value: 150, suffix: "+", label: "Projetos entregues" },
+  { value: 40, suffix: "+", label: "Clientes atendidos" },
+  { value: 100, suffix: "%", label: "Satisfação dos clientes" },
+];
 ---
 
 <CommonSectionWrapper
-  id="faq"
-  class="-mt-15 bg-brown/20 backdrop-blur-lg py-10!"
+  id="destaque"
+  class="relative z-10 -mt-12 bg-brown/20 backdrop-blur-lg py-10!"
 >
-  <div class="flex w-full items-center justify-center">
-    <h2 class="text-5xl">Seção destaque</h2>
+  <div
+    class="mx-auto grid w-full max-w-5xl grid-cols-2 gap-x-4 gap-y-8 px-6 sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+  >
+    {
+      stats.map((stat, index) => (
+        <div
+          class:list={[
+            "stat-item flex flex-col items-center text-center sm:flex-1 sm:items-start sm:border-l sm:border-background/15 sm:pl-6 sm:text-left",
+            index === 0 && "sm:border-l-0 sm:pl-0",
+          ]}
+        >
+          <span
+            class="stat-number font-serif text-4xl text-neutral-600 sm:text-5xl"
+            data-value={stat.value}
+            data-suffix={stat.suffix}
+          >
+            {`0${stat.suffix}`}
+          </span>
+          <span class="mt-2 text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+            {stat.label}
+          </span>
+        </div>
+      ))
+    }
   </div>
 </CommonSectionWrapper>
+
+<script>
+  import { animate, inView } from "motion";
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const numbers = document.querySelectorAll<HTMLElement>(
+    "#destaque .stat-number",
+  );
+
+  numbers.forEach((el) => {
+    const target = Number(el.dataset.value ?? "0");
+    const suffix = el.dataset.suffix ?? "";
+
+    if (prefersReducedMotion) {
+      el.textContent = `${target}${suffix}`;
+      return;
+    }
+
+    inView(
+      el,
+      () => {
+        animate<number>(0, target, {
+          duration: 1.4,
+          ease: "easeOut",
+          onUpdate: (latest: number) => {
+            el.textContent = `${Math.round(latest)}${suffix}`;
+          },
+        });
+      },
+      { amount: 0.6 },
+    );
+  });
+</script>
