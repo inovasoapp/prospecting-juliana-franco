@@ -1,13 +1,17 @@
 ---
 import CTAButtonMorph from "./CTAButtonMorph";
+import EmphasisMobile from "./EmphasisMobile.astro";
 ---
 
-<section id="home" class="hero-section">
+<section id="home" class="hero-section relative">
+  <div class="w-full lg:hidden absolute px-2 top-80 left-0 right-0 z-10">
+    <EmphasisMobile />
+  </div>
   <div class="hero-section-wrapper">
-    <div class="w-full lg:max-w-1/2">
+    <div class="w-full lg:max-w-1/2 flex flex-col items-start">
       <img src="/logo-marrom.webp" alt="" class="w-60 lg:w-80 mb-2" />
 
-      <h1 class="text-5xl text-title">
+      <h1 class="text-3xl! md:text-5xl! text-title">
         Seu imóvel, projetado com precisão. Executado com excelência.
       </h1>
 
@@ -20,20 +24,12 @@ import CTAButtonMorph from "./CTAButtonMorph";
       <a
         href="https://wa.me/5511932033948?text=Ol%C3%A1!%20Boa%20tarde.%20Quero%20mais%20informa%C3%A7%C3%B5es..."
         target="_blank"
-        class="w-full lg:w-60 bg-primary px-8 py-5 rounded-md hover:brightness-105 transition-all duration-300 text-sm text-neutral-50 font-medium uppercase lg:tracking-[0.2em]"
+        class="w-full sm:w-auto lg:w-110 bg-primary px-8 py-5 rounded-md hover:brightness-105 transition-all duration-300 text-sm text-neutral-50 font-medium uppercase lg:tracking-[0.2em] text-center"
       >
         Quero um projeto feito para mim
       </a>
     </div>
 
-    <!-- <div
-      class="w-full lg:max-w-1/2 flex justify-center img-container rounded-2xl"
-    >
-      <img
-        src="/specialist.webp"
-        alt=""
-        class="w-full h-full aspect-square object-cover rounded-2xl shadow-2xl shadow-purple-500/10 hero-image border border-slate-300"
-      />
-    </div> -->
+    <div class="h-85 lg:h-0"></div>
   </div>
 </section>

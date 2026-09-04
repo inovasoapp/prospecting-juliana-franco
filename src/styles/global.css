@@ -117,3 +117,12 @@
     font-size: 2rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    width: 100%;
+    background-image: url("/bg-hero-mobile.webp");
+    background-size: cover;
+    background-position: center;
+  }
+}
