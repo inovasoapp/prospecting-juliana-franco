@@ -113,16 +113,11 @@ export default function TestimonialsCarousel({
    * =========================================================
    */
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const [desktopPage, setDesktopPage] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
 
-  /*
-   * Desktop:
-   * 3 depoimentos por página.
-   *
-   * Mobile:
-   * 1 depoimento por página.
-   */
   const totalDesktopPages = Math.ceil(testimonials.length / 3);
+  const totalMobileItems = testimonials.length;
 
   /*
    * =========================================================
@@ -130,73 +125,221 @@ export default function TestimonialsCarousel({
    * =========================================================
    */
 
-  const goToPage = (page: number) => {
+  const goToDesktopPage = (page: number) => {
     const nextPage = Math.max(0, Math.min(page, totalDesktopPages - 1));
-
-    setCurrentPage(nextPage);
+    setDesktopPage(nextPage);
   };
 
-  const previous = () => {
-    goToPage(currentPage - 1);
+  const desktopPrevious = () => {
+    goToDesktopPage(desktopPage - 1);
   };
 
-  const next = () => {
-    goToPage(currentPage + 1);
+  const desktopNext = () => {
+    goToDesktopPage(desktopPage + 1);
+  };
+
+  const goToMobileIndex = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(index, totalMobileItems - 1));
+    setMobileIndex(nextIndex);
+  };
+
+  const mobilePrevious = () => {
+    goToMobileIndex(mobileIndex - 1);
+  };
+
+  const mobileNext = () => {
+    goToMobileIndex(mobileIndex + 1);
   };
 
   /*
    * =========================================================
-   * SWIPE
+   * SWIPE - MOBILE
    * =========================================================
    */
 
-  const touchStartX = useRef<number | null>(null);
-  const touchStartY = useRef<number | null>(null);
+  const mobileTouchStartX = useRef<number | null>(null);
+  const mobileTouchStartY = useRef<number | null>(null);
 
-  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+  const handleMobileTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     const touch = event.touches[0];
-
     if (!touch) return;
-
-    touchStartX.current = touch.clientX;
-    touchStartY.current = touch.clientY;
+    mobileTouchStartX.current = touch.clientX;
+    mobileTouchStartY.current = touch.clientY;
   };
 
-  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (touchStartX.current === null || touchStartY.current === null) {
+  const handleMobileTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (
+      mobileTouchStartX.current === null ||
+      mobileTouchStartY.current === null
+    ) {
       return;
     }
 
     const touch = event.changedTouches[0];
-
     if (!touch) return;
 
-    const distanceX = touch.clientX - touchStartX.current;
-    const distanceY = touch.clientY - touchStartY.current;
+    const distanceX = touch.clientX - mobileTouchStartX.current;
+    const distanceY = touch.clientY - mobileTouchStartY.current;
 
-    touchStartX.current = null;
-    touchStartY.current = null;
+    mobileTouchStartX.current = null;
+    mobileTouchStartY.current = null;
 
-    /*
-     * Ignora movimentos predominantemente verticais.
-     */
-    if (Math.abs(distanceX) < Math.abs(distanceY)) {
-      return;
-    }
-
-    /*
-     * Evita interpretar pequenos movimentos como swipe.
-     */
-    if (Math.abs(distanceX) < 50) {
+    if (Math.abs(distanceX) < Math.abs(distanceY) || Math.abs(distanceX) < 40) {
       return;
     }
 
     if (distanceX < 0) {
-      next();
+      mobileNext();
     } else {
-      previous();
+      mobilePrevious();
     }
   };
+
+  /*
+   * =========================================================
+   * SWIPE - DESKTOP
+   * =========================================================
+   */
+
+  const desktopTouchStartX = useRef<number | null>(null);
+  const desktopTouchStartY = useRef<number | null>(null);
+
+  const handleDesktopTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    desktopTouchStartX.current = touch.clientX;
+    desktopTouchStartY.current = touch.clientY;
+  };
+
+  const handleDesktopTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (
+      desktopTouchStartX.current === null ||
+      desktopTouchStartY.current === null
+    ) {
+      return;
+    }
+
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+
+    const distanceX = touch.clientX - desktopTouchStartX.current;
+    const distanceY = touch.clientY - desktopTouchStartY.current;
+
+    desktopTouchStartX.current = null;
+    desktopTouchStartY.current = null;
+
+    if (Math.abs(distanceX) < Math.abs(distanceY) || Math.abs(distanceX) < 50) {
+      return;
+    }
+
+    if (distanceX < 0) {
+      desktopNext();
+    } else {
+      desktopPrevious();
+    }
+  };
+
+  /*
+   * =========================================================
+   * CARD HELPER
+   * =========================================================
+   */
+
+  const TestimonialCard = ({
+    testimonial,
+    displayIndex,
+  }: {
+    testimonial: Testimonial;
+    displayIndex: number;
+  }) => (
+    <article
+      className="
+        group
+        relative
+        flex
+        h-full
+        min-h-82.5
+        flex-col
+        justify-between
+        rounded-lg
+        border
+        border-brown/10
+        bg-white/30
+        p-7
+        transition-colors
+        duration-500
+        hover:border-primary/20
+        hover:bg-white/50
+        sm:p-8
+        lg:min-h-87.5
+      "
+    >
+      {/* TOP */}
+      <div>
+        <div className="flex items-start justify-between">
+          <Quote size={22} strokeWidth={1} className="text-primary/55" />
+
+          <span
+            className="
+              font-mono
+              text-[9px]
+              tracking-[0.2em]
+              text-brown/20
+            "
+          >
+            {String(displayIndex + 1).padStart(2, "0")}
+          </span>
+        </div>
+
+        <p
+          className="
+            mt-8
+            text-[15px]
+            font-light
+            leading-7
+            text-brown/65
+          "
+        >
+          “{testimonial.text}”
+        </p>
+      </div>
+
+      {/* BOTTOM */}
+      <div className="mt-10">
+        <div
+          className="
+            mb-5
+            h-px
+            w-8
+            bg-primary/60
+          "
+        />
+
+        <p
+          className="
+            text-[10px]
+            uppercase
+            tracking-[0.2em]
+            text-title
+          "
+        >
+          {testimonial.name}
+        </p>
+
+        <p
+          className="
+            mt-2
+            text-[9px]
+            uppercase
+            tracking-[0.15em]
+            text-brown/30
+          "
+        >
+          {testimonial.role}
+        </p>
+      </div>
+    </article>
+  );
 
   /*
    * =========================================================
@@ -240,7 +383,7 @@ export default function TestimonialsCarousel({
             </span>
           </div>
 
-          <h2 className="max-w-2xl text-2xl font-light leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl mt-7">
+          <h2 className="mt-7 max-w-2xl text-2xl font-light leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
             Histórias que continuam
             <span className="italic"> depois do projeto.</span>
           </h2>
@@ -253,13 +396,14 @@ export default function TestimonialsCarousel({
         <div className="hidden items-center gap-3 sm:flex">
           <button
             type="button"
-            onClick={previous}
-            disabled={currentPage === 0}
+            onClick={desktopPrevious}
+            disabled={desktopPage === 0}
             aria-label="Depoimentos anteriores"
             className="
               flex size-11
               items-center justify-center
               rounded-full
+              bg-primary/10
               border border-brown/10
               text-brown/60
               transition-all duration-300
@@ -274,13 +418,14 @@ export default function TestimonialsCarousel({
 
           <button
             type="button"
-            onClick={next}
-            disabled={currentPage === totalDesktopPages - 1}
+            onClick={desktopNext}
+            disabled={desktopPage === totalDesktopPages - 1}
             aria-label="Próximos depoimentos"
             className="
               flex size-11
               items-center justify-center
               rounded-full
+              bg-primary/10
               border border-brown/10
               text-brown/60
               transition-all duration-300
@@ -296,7 +441,7 @@ export default function TestimonialsCarousel({
       </div>
 
       {/* =====================================================
-          CAROUSEL VIEWPORT
+          CAROUSEL VIEWPORT - MOBILE (1 POR VEZ)
       ====================================================== */}
 
       <div
@@ -305,14 +450,11 @@ export default function TestimonialsCarousel({
           overflow-hidden
           touch-pan-y
           select-none
+          sm:hidden
         "
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+        onTouchStart={handleMobileTouchStart}
+        onTouchEnd={handleMobileTouchEnd}
       >
-        {/* ===================================================
-            SLIDE TRACK
-        ==================================================== */}
-
         <div
           className="
             flex
@@ -321,7 +463,42 @@ export default function TestimonialsCarousel({
             ease-[cubic-bezier(.22,1,.36,1)]
           "
           style={{
-            transform: `translateX(-${currentPage * 100}%)`,
+            transform: `translateX(-${mobileIndex * 100}%)`,
+          }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="w-full shrink-0">
+              <TestimonialCard testimonial={testimonial} displayIndex={index} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* =====================================================
+          CAROUSEL VIEWPORT - DESKTOP (3 POR VEZ)
+      ====================================================== */}
+
+      <div
+        className="
+          relative
+          hidden
+          overflow-hidden
+          touch-pan-y
+          select-none
+          sm:block
+        "
+        onTouchStart={handleDesktopTouchStart}
+        onTouchEnd={handleDesktopTouchEnd}
+      >
+        <div
+          className="
+            flex
+            transition-transform
+            duration-700
+            ease-[cubic-bezier(.22,1,.36,1)]
+          "
+          style={{
+            transform: `translateX(-${desktopPage * 100}%)`,
           }}
         >
           {Array.from({
@@ -342,101 +519,11 @@ export default function TestimonialsCarousel({
               {testimonials
                 .slice(pageIndex * 3, pageIndex * 3 + 3)
                 .map((testimonial, index) => (
-                  <article
+                  <TestimonialCard
                     key={`${testimonial.name}-${pageIndex}-${index}`}
-                    className="
-                      group
-                      relative
-                      flex
-                      min-h-82.5
-                      flex-col
-                      justify-between
-                      rounded-lg
-                      border
-                      border-brown/10
-                      bg-white/30
-                      p-7
-                      transition-colors
-                      duration-500
-                      hover:border-primary/20
-                      hover:bg-white/50
-                      sm:p-8
-                      lg:min-h-87.5
-                    "
-                  >
-                    {/* TOP */}
-
-                    <div>
-                      <div className="flex items-start justify-between">
-                        <Quote
-                          size={22}
-                          strokeWidth={1}
-                          className="
-                            text-primary/55
-                          "
-                        />
-
-                        <span
-                          className="
-                            font-mono
-                            text-[9px]
-                            tracking-[0.2em]
-                            text-brown/20
-                          "
-                        >
-                          {String(pageIndex * 3 + index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-
-                      <p
-                        className="
-                          mt-8
-                          text-[15px]
-                          font-light
-                          leading-7
-                          text-brown/65
-                        "
-                      >
-                        “{testimonial.text}”
-                      </p>
-                    </div>
-
-                    {/* BOTTOM */}
-
-                    <div className="mt-10">
-                      <div
-                        className="
-                          mb-5
-                          h-px
-                          w-8
-                          bg-primary/60
-                        "
-                      />
-
-                      <p
-                        className="
-                          text-[10px]
-                          uppercase
-                          tracking-[0.2em]
-                          text-title
-                        "
-                      >
-                        {testimonial.name}
-                      </p>
-
-                      <p
-                        className="
-                          mt-2
-                          text-[9px]
-                          uppercase
-                          tracking-[0.15em]
-                          text-brown/30
-                        "
-                      >
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </article>
+                    testimonial={testimonial}
+                    displayIndex={pageIndex * 3 + index}
+                  />
                 ))}
             </div>
           ))}
@@ -465,13 +552,14 @@ export default function TestimonialsCarousel({
         <div className="flex items-center gap-2 sm:hidden">
           <button
             type="button"
-            onClick={previous}
-            disabled={currentPage === 0}
-            aria-label="Depoimentos anteriores"
+            onClick={mobilePrevious}
+            disabled={mobileIndex === 0}
+            aria-label="Depoimento anterior"
             className="
               flex size-9
               items-center justify-center
               rounded-full
+              bg-primary/10
               border border-brown/10
               text-brown/55
               transition-all duration-300
@@ -484,13 +572,14 @@ export default function TestimonialsCarousel({
 
           <button
             type="button"
-            onClick={next}
-            disabled={currentPage === totalDesktopPages - 1}
-            aria-label="Próximos depoimentos"
+            onClick={mobileNext}
+            disabled={mobileIndex === totalMobileItems - 1}
+            aria-label="Próximo depoimento"
             className="
               flex size-9
               items-center justify-center
               rounded-full
+              bg-primary/10
               border border-brown/10
               text-brown/55
               transition-all duration-300
@@ -503,10 +592,10 @@ export default function TestimonialsCarousel({
         </div>
 
         {/* ===================================================
-            INDICATOR
+            MOBILE INDICATOR
         ==================================================== */}
 
-        <div className="mx-auto flex items-center gap-4 sm:mx-0">
+        <div className="mx-auto flex items-center gap-4 sm:hidden">
           <span
             className="
               font-mono
@@ -515,7 +604,44 @@ export default function TestimonialsCarousel({
               text-primary
             "
           >
-            {String(currentPage + 1).padStart(2, "0")}
+            {String(mobileIndex + 1).padStart(2, "0")}
+          </span>
+
+          <div className="relative h-px w-20 bg-brown/15">
+            <div
+              className="h-full bg-primary transition-all duration-500"
+              style={{
+                width: `${((mobileIndex + 1) / totalMobileItems) * 100}%`,
+              }}
+            />
+          </div>
+
+          <span
+            className="
+              font-mono
+              text-[9px]
+              tracking-[0.2em]
+              text-brown/25
+            "
+          >
+            {String(totalMobileItems).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* ===================================================
+            DESKTOP INDICATOR
+        ==================================================== */}
+
+        <div className="hidden items-center gap-4 sm:flex">
+          <span
+            className="
+              font-mono
+              text-[9px]
+              tracking-[0.2em]
+              text-primary
+            "
+          >
+            {String(desktopPage + 1).padStart(2, "0")}
           </span>
 
           <div className="flex items-center gap-1.5">
@@ -525,9 +651,9 @@ export default function TestimonialsCarousel({
               <button
                 key={index}
                 type="button"
-                onClick={() => goToPage(index)}
+                onClick={() => goToDesktopPage(index)}
                 aria-label={`Ir para grupo ${index + 1}`}
-                aria-current={currentPage === index ? "true" : undefined}
+                aria-current={desktopPage === index ? "true" : undefined}
                 className="
                   group
                   flex
@@ -541,7 +667,7 @@ export default function TestimonialsCarousel({
                     h-px
                     transition-all duration-500
                     ${
-                      currentPage === index
+                      desktopPage === index
                         ? "w-8 bg-primary"
                         : "w-3 bg-brown/15 group-hover:bg-brown/40"
                     }
