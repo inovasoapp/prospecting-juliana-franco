@@ -125,7 +125,7 @@ export default function OfficeGallery({ images }: Props) {
       type="button"
       onClick={() => open(index)}
       aria-label={`Abrir imagem ${index + 1} de ${images.length}`}
-      className={`group relative overflow-hidden text-left ${className}`}
+      className={`group relative w-full overflow-hidden text-left ${className}`}
     >
       <img
         src={images[index].src}
@@ -187,7 +187,7 @@ export default function OfficeGallery({ images }: Props) {
             sm:col-span-5
             sm:row-span-2
             sm:aspect-auto
-            min-h-105
+            sm:min-h-105
           "
         />
 
